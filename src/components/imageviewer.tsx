@@ -1,35 +1,39 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import styles from "../styles/styles.module.css";
 
 
 type Props = {
-  images: string[]
+    images: string[]
 }
 
-const ImageViewer: React.FC<Props> = ({ images }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+const ImageViewer = ({images}: Props): JSX.Element => {
+    const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
-  const handlePrevClick = () => {
-    setCurrentImageIndex(currentImageIndex - 1)
-  }
+    const handlePrevClick = (): void => {
+        setCurrentImageIndex((prevIndex) =>
+            (prevIndex - 1 + images.length) % images.length
+        );
+    };
 
-  const handleNextClick = () => {
-    setCurrentImageIndex(currentImageIndex + 1)
-  }
+    const handleNextClick = (): void => {
+        setCurrentImageIndex((prevIndex) =>
+            (prevIndex + 1) % images.length
+        );
+    };
 
-  return (
-      <div className={styles.image}>
-        <img src={images[currentImageIndex]} />
-          <div className={styles.buttons}>
-              <button onClick={handlePrevClick} disabled={currentImageIndex === 0}>
-                  Previous
-              </button>
-              <button onClick={handleNextClick} disabled={currentImageIndex === images.length - 1}>
-                  Next
-              </button>
-          </div>
-      </div>
-  )
+    return (
+        <div className={styles.image}>
+            <img src={images[currentImageIndex]} alt={'alt'}/>
+            <div className={styles.buttons}>
+                <button onClick={handlePrevClick}>
+                    Previous
+                </button>
+                <button onClick={handleNextClick}>
+                    Next
+                </button>
+            </div>
+        </div>
+    )
 }
 
 export default ImageViewer

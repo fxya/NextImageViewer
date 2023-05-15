@@ -9,11 +9,11 @@ const index = [
     'https://picsum.photos/300/400'
 ]
 
-const IndexPage: React.FC = () => {
+const IndexPage = () => {
     return (
         <div className={styles.container}>
             <h1>My Image Viewer App</h1>
-            <ImageViewer images={index} />
+            <ImageViewer images={index}/>
         </div>
     )
 }
