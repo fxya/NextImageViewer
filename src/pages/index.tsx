@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ImageViewer from '../components/imageviewer';
 import styles from '../styles/styles.module.css';
 import exifr from 'exifr';
+import ExifDataViewer from "@/components/ExifDataViewer";
 
 const index = [
     'https://picsum.photos/200/300',
@@ -39,14 +40,7 @@ const IndexPage = () => {
         <div className={styles.container}>
             <h1>My Image Viewer App</h1>
             <ImageViewer images={index} currentImageIndex={currentImageIndex} />
-
-            {exifData && (
-                <div className={styles.exifData}>
-                    <h2>EXIF Data</h2>
-                    <pre>{JSON.stringify(exifData, null, 2)}</pre>
-                </div>
-            )}
-
+            <ExifDataViewer exifData={exifData} />
             <div className={styles.buttons}>
                 <button onClick={handlePrevClick}>Previous</button>
                 <button onClick={handleNextClick}>Next</button>
