@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import exifr from "exifr";
 
-const ExifDataLoader = ( index: string[], currentImageIndex: number) => {
+const ExifDataLoader  = ( index: string[], currentImageIndex: number) => {
     const [exifData, setExifData] = useState<Record<string, any> | null>(null);
 
     useEffect(() => {
