@@ -31,6 +31,18 @@
     margin-top: 10px;
 }
 
+.metadata {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 10px;
+    text-align: center;
+}
+
 @media (max-width: 767px) {
     .container {
         padding: 10px;
