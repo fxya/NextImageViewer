@@ -5,7 +5,7 @@ This is a basic React/[Next.js](https://nextjs.org/)/TypeScript image viewer boo
 Run the development server:
 
 ```bash
-npm run dev
+npm install && npm run dev (only need to run npm install once)
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser.

@@ -3,8 +3,9 @@ import ImageViewer from '../components/imageviewer';
 import styles from '../styles/styles.module.css';
 import exifr from 'exifr';
 import ExifDataViewer from "@/components/ExifDataViewer";
+import ExifDataLoader from "@/components/ExifDataLoader";
 
-const index = [
+const index: string [] = [
     'https://picsum.photos/200/300',
     'https://picsum.photos/250/350',
     'https://picsum.photos/300/400'
@@ -12,17 +13,6 @@ const index = [
 
 const IndexPage = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-    const [exifData, setExifData] = useState<Record<string, any> | null>(null);
-
-    useEffect(() => {
-        const loadImageExifData = async () => {
-            const currentImage = index[currentImageIndex];
-            const data = await exifr.parse(currentImage);
-            setExifData(data);
-        };
-
-        loadImageExifData();
-    }, [currentImageIndex]);
 
     const handlePrevClick = (): void => {
         setCurrentImageIndex((prevIndex) =>
@@ -40,7 +30,7 @@ const IndexPage = () => {
         <div className={styles.container}>
             <h1>My Image Viewer App</h1>
             <ImageViewer images={index} currentImageIndex={currentImageIndex} />
-            <ExifDataViewer exifData={exifData} />
+            <ExifDataViewer exifData={ExifDataLoader(index, currentImageIndex)} />
             <div className={styles.buttons}>
                 <button onClick={handlePrevClick}>Previous</button>
                 <button onClick={handleNextClick}>Next</button>
