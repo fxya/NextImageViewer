@@ -4,13 +4,15 @@ import React from 'react';
 type Props = {
     handlePrevClick: () => void;
     handleNextClick: () => void;
+    uploadImage: () => void;
 };
 
-const ButtonContainer = ({ handlePrevClick, handleNextClick }: Props) => {
+const ButtonContainer = ({ handlePrevClick, handleNextClick, uploadImage }: Props) => {
     return (
         <div className={styles.buttons}>
             <button onClick={handlePrevClick}>Previous</button>
             <button onClick={handleNextClick}>Next</button>
+            <button onClick={uploadImage}>Upload Image</button>
         </div>
     );
 };
