@@ -1,4 +1,4 @@
-This is a basic React/[Next.js](https://nextjs.org/)/TypeScript image viewer bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) that loads a predetermined array of images for which the user can view EXIF data using the exifr module. Additionally, the user can upload their own images to view its EXIF data.
+This is a basic React/[Next.js](https://nextjs.org/)/TypeScript image viewer bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) that loads a predetermined array of images for which the user can view EXIF data using the exifr module. Additionally, the user can upload their own images individually to view their EXIF data.
 
 ## Getting Started
 
