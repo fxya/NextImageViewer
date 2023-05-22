@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import exifr from "exifr";
+import styles from "../styles/styles.module.css";
 
 type ExifDataLoaderProps = {
     index: string[];
@@ -16,7 +17,7 @@ const ExifDataLoader = ({ index, currentImageIndex }: ExifDataLoaderProps) => {
             setExifData(data);
         };
 
-        loadImageExifData();
+        loadImageExifData().then(() => { console.log("loadImageExifData()") } );
     }, [index, currentImageIndex]);
 
     if (exifData === null) {
@@ -26,14 +27,15 @@ const ExifDataLoader = ({ index, currentImageIndex }: ExifDataLoaderProps) => {
 
     // Return the JSX element using the exifData
     return (
-        <div>
-            {/* Render the exifData properties */}
-            {Object.entries(exifData).map(([key, value]) => (
-                <div key={key}>
-                    <span>{key}: </span>
-                    <span>{value}</span>
-                </div>
-            ))}
+        <div className={styles.exifData}>
+            <h2>Exif Data</h2>
+            <div className={styles.exifDataContent}>
+                {exifData ? (
+                    <pre>{JSON.stringify(exifData, null, 2)}</pre>
+                ) : (
+                    <p>No Exif data found</p>
+                )}
+            </div>
         </div>
     );
 };
