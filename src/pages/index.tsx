@@ -40,7 +40,7 @@ const IndexPage = () => {
                 index.push(uploadedImage[0].content as string); // Support a single file upload
             }
             console.log(index);
-            setCurrentImageIndex(updatedIndex.length);  // Set the current image index to the last image in the array
+            setCurrentImageIndex(index.length - 1);  // Set the current image index to the last image in the array
         },
         onFilesRejected: (fileErrors: FileErrors) => {
             setErrors(fileErrors);
