@@ -1,7 +1,12 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import exifr from "exifr";
 
-const ExifDataLoader  = ( index: string[], currentImageIndex: number) => {
+type ExifDataLoaderProps = {
+    index: string[];
+    currentImageIndex: number;
+};
+
+const ExifDataLoader = ({ index, currentImageIndex }: ExifDataLoaderProps) => {
     const [exifData, setExifData] = useState<Record<string, any> | null>(null);
 
     useEffect(() => {
@@ -12,10 +17,25 @@ const ExifDataLoader  = ( index: string[], currentImageIndex: number) => {
         };
 
         loadImageExifData();
-    }, [currentImageIndex]);
+    }, [index, currentImageIndex]);
 
+    if (exifData === null) {
+        // Return a placeholder or loading indicator
+        return <div>Loading Exif data...</div>;
+    }
 
-    return exifData;
-}
+    // Return the JSX element using the exifData
+    return (
+        <div>
+            {/* Render the exifData properties */}
+            {Object.entries(exifData).map(([key, value]) => (
+                <div key={key}>
+                    <span>{key}: </span>
+                    <span>{value}</span>
+                </div>
+            ))}
+        </div>
+    );
+};
 
 export default ExifDataLoader;

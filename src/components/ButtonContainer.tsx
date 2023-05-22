@@ -1,5 +1,5 @@
 import styles from '../styles/styles.module.css';
-import React from 'react';
+import React, {MouseEventHandler} from 'react';
 
 type Props = {
     handlePrevClick: () => void;
